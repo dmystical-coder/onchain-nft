@@ -6,7 +6,9 @@ require("dotenv").config();
 const {
   ACCOUNT_PRIVATE_KEY,
   ALCHEMY_SEPOLIA_API_KEY_URL,
+  ALCHEMY_BASE_SEPOLIA_API_KEY_URL,
   ETHERSCAN_API_KEY,
+  BASESCAN_API_KEY
 } = process.env;
 
 const config: HardhatUserConfig = {
@@ -17,10 +19,15 @@ const config: HardhatUserConfig = {
       url: ALCHEMY_SEPOLIA_API_KEY_URL,
       accounts: [`0x${ACCOUNT_PRIVATE_KEY}`],
     },
+    "base-sepolia": {
+      url: ALCHEMY_BASE_SEPOLIA_API_KEY_URL,
+      accounts: [`0x${ACCOUNT_PRIVATE_KEY}`]
+    }
   },
   etherscan: {
     apiKey: {
       sepolia: ETHERSCAN_API_KEY || "",
+      baseSepolia: BASESCAN_API_KEY || "",
     },
   }
 };
